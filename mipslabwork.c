@@ -51,7 +51,7 @@ void labwork( void )
 
   if (window == 0)
   {
-hallo.com 
+    
   }
   else if (window == 1)
   {
