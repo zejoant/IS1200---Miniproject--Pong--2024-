@@ -6,10 +6,6 @@
 #include <string.h>
 
 int currentMenu = 1;
-char line1[] = ">  SinglePlayer";
-char line2[] = "   Multiplayer";
-char line3[] = "   Highscore";
-char line4[] = "   Easter Egg";
 
 void menu(int btns)
 {
@@ -18,41 +14,33 @@ void menu(int btns)
 
     if (currentMenu == 1)
     {
-        strcpy(line1, ">  SinglePlayer");
-        strcpy(line2, "   Multiplayer");
-        strcpy(line4, "   Easter Egg");
+        display_string(0, ">  SinglePlayer");
+        display_string(1, "   Multiplayer");
+        display_string(3, "   Easter Egg");
     }
     if (currentMenu == 2)
     {
-        strcpy(line1, "   SinglePlayer");
-        strcpy(line2, ">  Multiplayer");
-        strcpy(line3, "   Highscore");
+        display_string(0, "   SinglePlayer");
+        display_string(1, ">  Multiplayer");
+        display_string(2, "   Highscore");
      
     }
     if (currentMenu == 3)
     {
-        strcpy(line2, "   Multiplayer");
-        strcpy(line3, ">  Highscore");
-        strcpy(line4, "   Easter Egg");
+        display_string(1, "   Multiplayer");
+        display_string(2, ">  Highscore");
+        display_string(3, "   Easter Egg");
     
     }
     if (currentMenu == 4)
     {
-        strcpy(line1, "   SinglePlayer");
-        strcpy(line3, "   Highscore");
-        strcpy(line4, ">  Easter Egg");
+        display_string(0, "   SinglePlayer");
+        display_string(2, "   Highscore");
+        display_string(3, ">  Easter Egg");
     }
     
 
 
-    switchMenu();
+    display_update();
 }
 
-int switchMenu()
-{
-display_string(0, line1);
-display_string(1, line2);
-display_string(2, line3);
-display_string(3, line4);
-display_update();
-}
