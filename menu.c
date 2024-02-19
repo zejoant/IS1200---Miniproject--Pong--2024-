@@ -10,7 +10,25 @@ int currentMenu = 1;
 void menu(int btns)
 {
     if(getbtns() & 1)
+    {
         currentMenu++;
+    }
+    if(getbtns() & 2)
+    {
+        currentMenu--;
+    }
+    if(getbtns() & 3) //confirm button
+    {
+        return; //placeholder
+    }
+    if(currentMenu > 4)
+    {
+        currentMenu = 0;
+    }
+    if(currentMenu < 1)
+    {
+        currentMenu = 4;
+    }
 
     if (currentMenu == 1)
     {
