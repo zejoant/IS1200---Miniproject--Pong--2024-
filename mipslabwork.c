@@ -17,6 +17,7 @@
 uint8_t display[32][128];
 uint8_t oled_display[512];
 int initial_active = 0;
+int window = 0;
 
 
 char textstring[] = "text, more text, and even more text!";
@@ -46,19 +47,21 @@ void labwork( void )
 
   if(sw & 1)
   {
-    quit();
+    //quit();
+    return;
   }
 
   if (window == 0)
   {
-    
+    menu(btns);
   }
   else if (window == 1)
   {
-
+    return;
   }
   else
   {
-
+    return;
   }
+
 }
