@@ -61,8 +61,8 @@ extern int window;
 void ConvertToPixels(int, int, int, int);
 void ImageReset(void);
 void ConvertToImage(void);
-extern uint8_t display[32][128];
-extern uint8_t oledDisplay[512];
+extern uint8_t displayCoords[32][128];
+extern uint8_t displayFormat[512];
 
 //ball
 void ballMove(void);

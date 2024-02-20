@@ -16,7 +16,7 @@ void ConvertToPixels(int x, int y, int width, int height)
         {
             if ((screenHeight >= y && screenHeight <= y+height) && (screenWidth >= x && screenWidth <= x+width))
             {
-                display[screenHeight][screenWidth] = 0x1; 
+                displayCoords[screenHeight][screenWidth] = 0x1; 
             }
         }
     }
@@ -33,33 +33,36 @@ void ImageReset()
     {
         for (screenWidth = 0; screenWidth < 128; screenWidth++)
         {
-            display[screenHeight][screenWidth] = 0x0; 
+            displayCoords[screenHeight][screenWidth] = 0x0; 
         }
     }
 
     for (i = 0; i < 512; i++)
     {
-        oledDisplay[i] = 0x0; 
+        displayFormat[i] = 0x0; 
     }
 }
 
 void ConvertToImage() {
-  int page, column, row, c, k;
-  uint8_t powerOfTwo = 1;
-  uint8_t oledNumber = 0;
+  int page;
+  int column;
+  int row;
+  
+  uint8_t bitPos = 1;
+  uint8_t formattedNum = 0;
 
   for(page = 0; page < 4; page++) {
     for(column = 0; column < 128; column++) {
-      powerOfTwo = 1;
-      oledNumber = 0;
+      bitPos = 1;
+      formattedNum = 0;
 
       for(row = 0; row < 8; row++) {
-        if(display[8 * page + row][column]) {
-          oledNumber |= powerOfTwo;
+        if(displayCoords[8 * page + row][column]) {
+          formattedNum |= bitPos;
         }
-        powerOfTwo <<= 1;
+        bitPos <<= 1;
       }
-      oledDisplay[column + page * 128] = oledNumber;
+      displayFormat[column + page * 128] = formattedNum;
     }
   }
 }

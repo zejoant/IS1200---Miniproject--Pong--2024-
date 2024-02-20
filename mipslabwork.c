@@ -16,8 +16,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-uint8_t display[32][128];
-uint8_t oledDisplay[512];
+uint8_t displayCoords[32][128];
+uint8_t displayFormat[512];
 int initial_active = 0;
 int window = 0;
 

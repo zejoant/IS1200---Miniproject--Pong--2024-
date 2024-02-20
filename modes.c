@@ -15,7 +15,7 @@ void Singleplayer(btns)
     ConvertToPixels((2), (posStick1), stickWidth, stickHeight);
     ConvertToPixels((124), (posStick2), stickWidth, stickHeight);
     ConvertToImage();
-    display_image(0, oledDisplay);
+    display_image(0, displayFormat);
 
      //Boll
     ballMove();
