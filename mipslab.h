@@ -65,14 +65,16 @@ extern uint8_t displayCoords[32][128];
 extern uint8_t displayFormat[512];
 
 //ball
-void ballMove(void);
+void BallMove(void);
 extern int xBall;
 extern int yBall;
 
 //sticks
 void MoveStick1(int);
 void MoveStick2(int);
-extern int posStick1;
-extern int posStick2;
+extern int yPosStick1;
+extern int yPosStick2;
+extern int xPosStick1;
+extern int xPosStick2;
 extern int stickHeight;
 extern int stickWidth;

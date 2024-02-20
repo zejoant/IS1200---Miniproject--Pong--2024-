@@ -12,8 +12,8 @@ void Singleplayer(btns)
     //Rita
     ImageReset();
     ConvertToPixels((xBall), (yBall), 2, 2);
-    ConvertToPixels((2), (posStick1), stickWidth, stickHeight);
-    ConvertToPixels((124), (posStick2), stickWidth, stickHeight);
+    ConvertToPixels((2), (yPosStick1), stickWidth, stickHeight);
+    ConvertToPixels((124), (yPosStick2), stickWidth, stickHeight);
     ConvertToImage();
     display_image(0, displayFormat);
 
