@@ -9,21 +9,23 @@ int currentMenu = 1;
 
 void menu(int btns)
 {
-    if(getbtns() & 1)
+    delay(200);
+    if((getbtns() & 0x1))
     {
         currentMenu++;
     }
-    if(getbtns() & 2)
+    else if((getbtns() & 0x2))
     {
         currentMenu--;
     }
-    if(getbtns() & 3) //confirm button
+    else if(getbtns() & 0x4) //confirm button
     {
-        return; //placeholder
+        window = 1; 
     }
+
     if(currentMenu > 4)
     {
-        currentMenu = 0;
+        currentMenu = 1;
     }
     if(currentMenu < 1)
     {
@@ -33,27 +35,29 @@ void menu(int btns)
     if (currentMenu == 1)
     {
         display_string(0, ">  SinglePlayer");
-        display_string(1, "   Multiplayer");
-        display_string(3, "   Easter Egg");
+        display_string(1, "  Multiplayer");
+        display_string(2, "  Highscore");
+        display_string(3, "  Easter Egg");
     }
-    if (currentMenu == 2)
+    else if (currentMenu == 2)
     {
-        display_string(0, "   SinglePlayer");
+        display_string(0, "  SinglePlayer");
         display_string(1, ">  Multiplayer");
-        display_string(2, "   Highscore");
+        display_string(2, "  Highscore");
+        
      
     }
-    if (currentMenu == 3)
+    else if (currentMenu == 3)
     {
-        display_string(1, "   Multiplayer");
+        display_string(1, "  Multiplayer");
         display_string(2, ">  Highscore");
-        display_string(3, "   Easter Egg");
+        display_string(3, "  Easter Egg");
     
     }
-    if (currentMenu == 4)
+    else if (currentMenu == 4)
     {
-        display_string(0, "   SinglePlayer");
-        display_string(2, "   Highscore");
+        display_string(0, "  SinglePlayer");
+        display_string(2, "  Highscore");
         display_string(3, ">  Easter Egg");
     }
     

@@ -14,6 +14,7 @@ int getsw(void)
 int getbtns(void)
 {
 
-   return ((PORTD>>5) & 0x0007);
+   return ((((PORTD>>5) & 0x0007) <<1) | ((PORTF>>1) & 0x1));
+
 
 }

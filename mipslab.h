@@ -53,3 +53,26 @@ void time2string( char *, int );
 int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
+
+//game window 
+extern int window; 
+
+//image functions
+void ConvertToPixels(int, int, int, int);
+void ImageReset(void);
+void ConvertToImage(void);
+extern uint8_t display[32][128];
+extern uint8_t oledDisplay[512];
+
+//ball
+void ballMove(void);
+extern int xBall;
+extern int yBall;
+
+//sticks
+void MoveStick1(int);
+void MoveStick2(int);
+extern int posStick1;
+extern int posStick2;
+extern int stickHeight;
+extern int stickWidth;

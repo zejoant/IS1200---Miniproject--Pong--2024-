@@ -42,31 +42,23 @@ hexasc:
 		nop
 
 delay:
-	PUSH $s0
-	
-	li $s0, 0xF #FFFFF #4711
-	
-	delay_while:					#loops the amount of times stored in $a0
-		ble $a0, $zero, delay_end
-		nop
-		addi $a0, $a0, -1
-		
-		delay_for:				#loops the amount of times stored in $s0
-			beq $s0, $zero, delay_for_end
-			nop
-			addi $s0, $s0, -1
-			j delay_for
-			nop
-		delay_for_end:
-		
-		j delay_while
-		nop
-	delay_end:
-	
-	POP $s0
-	
-	jr $ra
-	nop
+
+delayloop:
+    beqz    $a0, delaydone    # done if 0
+    sub    $a0, $a0, 1    # decrement counter
+
+    addi    $t0, $0, 4711    # for loop that takes 1 ms
+
+delaymsloop:
+    beqz    $t0, delayloop    # done if counter in loop finished
+    sub    $t0, $t0, 1
+    nop
+    j    delaymsloop    # while $t0 > 0
+    nop
+
+delaydone:
+    jr     $ra
+    nop
 
 time2string:
 	PUSH $ra

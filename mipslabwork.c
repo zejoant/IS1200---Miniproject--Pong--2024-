@@ -13,9 +13,11 @@
 #include <stdint.h>   /* Declarations of uint_32 and the like */
 #include <pic32mx.h>  /* Declarations of system-specific addresses etc */
 #include "mipslab.h"  /* Declatations for these labs */
+#include <stdio.h>
+#include <stdlib.h>
 
 uint8_t display[32][128];
-uint8_t oled_display[512];
+uint8_t oledDisplay[512];
 int initial_active = 0;
 int window = 0;
 
@@ -57,11 +59,19 @@ void labwork( void )
   }
   else if (window == 1)
   {
-    return;
+    Singleplayer(btns);
   }
-  else
+  else if (window == 2)
   {
-    return;
+    Multiplayer(btns);
+  }
+  else if (window == 3)
+  {
+    Highscore(btns);
+  }
+  else if (window == 4)
+  {
+    EasterEgg();
   }
 
 }
