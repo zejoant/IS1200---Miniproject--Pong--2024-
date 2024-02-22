@@ -13,42 +13,55 @@ const int xPosStick1 = 2;
 int yPosStick2 = 32/2 - (32/3)/2;
 const int xPosStick2 = 124;
 
-const int stickSpeed = 1;
+int stickSpeed1 = 0;
+int stickSpeed2 = 0;
 
 void MoveStick1(btns)
 {
-    if ((yPosStick1 > 0))
+    if(getbtns() & 0x2)
     {
-        if(getbtns() & 0x1)
+        stickSpeed1 = -1;
+        if ((yPosStick1 < 0))
         {
-            yPosStick1 -= stickSpeed; 
+            stickSpeed1 = 0;
         }
     }
-    if (yPosStick1 < (32-stickHeight-1))
+    if(getbtns() & 0x1)
     {
-        if(getbtns() & 0x2)
+        stickSpeed1 = 1;
+        if (yPosStick1+stickHeight > (32-1))
         {
-        yPosStick1 += stickSpeed; 
+            stickSpeed1 = 0;
         }
     }
 
+    if (!(getbtns() & 0x2) && !(getbtns() & 0x1))
+        stickSpeed1 = 0;
+
+    yPosStick1 += stickSpeed1; 
 }
 
 void MoveStick2(btns)
 {
-    if ((yPosStick2 > 0))
+    if(getbtns() & 0x8)
     {
-        if(getbtns() & 0x4)
+        stickSpeed2 = -1;
+        if ((yPosStick2 < 0))
         {
-            yPosStick2 -= stickSpeed; 
+            stickSpeed2 = 0;
         }
     }
-    if (yPosStick2 < (32-stickHeight-1))
+    if(getbtns() & 0x4)
     {
-        if(getbtns() & 0x8)
+        stickSpeed2 = 1;
+        if (yPosStick2+stickHeight > (32-1))
         {
-        yPosStick2 += stickSpeed; 
+            stickSpeed2 = 0;
         }
     }
 
+    if (!(getbtns() & 0x4) && !(getbtns() & 0x8))
+        stickSpeed2 = 0;
+
+    yPosStick2 += stickSpeed2; 
 }

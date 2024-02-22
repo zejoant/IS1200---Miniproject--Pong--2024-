@@ -11,14 +11,14 @@ void Singleplayer(btns)
 
     //Rita
     ImageReset();
-    ConvertToPixels((xBall), (yBall), 2, 2);
+    ConvertToPixels((xBallPos), (yBallPos), 2, 2);
     ConvertToPixels((2), (yPosStick1), stickWidth, stickHeight);
     ConvertToPixels((124), (yPosStick2), stickWidth, stickHeight);
     ConvertToImage();
     display_image(0, displayFormat);
 
      //Boll
-    ballMove();
+    BallMove();
 
     //Pinnar
     MoveStick1(btns);
