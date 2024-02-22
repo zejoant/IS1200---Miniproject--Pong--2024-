@@ -18,9 +18,10 @@ void menu(int btns)
     {
         currentMenu--;
     }
-    else if(getbtns() & 0x4) //confirm button
+
+    if(getbtns() & 0x4) //confirm button
     {
-        window = 1; 
+        window = currentMenu; 
     }
 
     if(currentMenu > 4)
@@ -31,7 +32,6 @@ void menu(int btns)
     {
         currentMenu = 4;
     }
-
     if (currentMenu == 1)
     {
         display_string(0, ">  SinglePlayer");
@@ -44,8 +44,6 @@ void menu(int btns)
         display_string(0, "  SinglePlayer");
         display_string(1, ">  Multiplayer");
         display_string(2, "  Highscore");
-        
-     
     }
     else if (currentMenu == 3)
     {
@@ -61,8 +59,5 @@ void menu(int btns)
         display_string(3, ">  Easter Egg");
     }
     
-
-
     display_update();
 }
-

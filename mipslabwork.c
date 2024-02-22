@@ -20,6 +20,7 @@ uint8_t displayCoords[32][128];
 uint8_t displayFormat[512];
 int initial_active = 0;
 int window = 0;
+int windowMem = 0;
 
 
 char textstring[] = "text, more text, and even more text!";
@@ -73,5 +74,16 @@ void labwork( void )
   {
     EasterEgg();
   }
+  else if (window == 5)
+  {
+    ShowScore();
+  }
+
+  if(getsw() && 0x1)
+  {
+    Restart();
+  }
 
 }
+
+

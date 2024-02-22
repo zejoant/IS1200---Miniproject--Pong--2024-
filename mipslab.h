@@ -54,20 +54,29 @@ int getbtns(void);
 int getsw(void);
 void enable_interrupt(void);
 
-//game window 
+//game window
+void Restart(void);
+void Quit(void);
 extern int window; 
+extern int windowMem;
+extern int currentMenu;
+
 
 //image functions
 void ConvertToPixels(int, int, int, int);
 void ImageReset(void);
 void ConvertToImage(void);
+void StringReset(void);
+void MatchReset(void);
 extern uint8_t displayCoords[32][128];
 extern uint8_t displayFormat[512];
 
 //ball
 void BallMove(void);
-extern int xBallPos;
-extern int yBallPos;
+extern float xBallPos;
+extern float yBallPos;
+extern float xBallSpeed;
+extern float yBallSpeed;
 
 //sticks
 void MoveStick1(int);
@@ -80,3 +89,12 @@ extern int stickHeight;
 extern const int stickWidth;
 extern int stickSpeed1;
 extern int stickSpeed2;
+
+//player scores
+void ShowScore(void);
+extern int scoreP2;
+extern int scoreP1;
+
+//Ai
+void AiMove(void);
+extern int AIFollow;

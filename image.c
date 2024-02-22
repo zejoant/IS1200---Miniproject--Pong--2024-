@@ -5,6 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+void StringReset()
+{
+    display_string(0, "");
+    display_string(1, "");
+    display_string(2, "");
+    display_string(3, "");
+    display_update();
+}
+
 void ConvertToPixels(int x, int y, int width, int height)
 {
     int screenHeight;
