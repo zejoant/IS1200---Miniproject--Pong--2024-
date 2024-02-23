@@ -34,7 +34,7 @@ void user_isr( void )
 /* Lab-specific initialization goes here */
 void labinit( void )
 {
-  PORTE = 0x0;      // LED:s
+  PORTE = 1;      // LED:s
   TRISECLR = 0xff;  // Set as output (LED:S)
   TRISDSET = 0xfe0; // Set as input (BTN 2-4, SW 1-4)
   TRISFSET = 0x2;   // Set as input (BTN 1)
@@ -48,15 +48,9 @@ void labwork( void )
   int btns = getbtns();
   int sw = getsw();
 
-  if(sw & 1)
-  {
-    //quit();
-    return;
-  }
-
   if (window == 0)
   {
-    menu(btns);
+    Menu(btns);
   }
   else if (window == 1)
   {
@@ -72,14 +66,22 @@ void labwork( void )
   }
   else if (window == 4)
   {
-    EasterEgg();
+    Difficulty();
   }
   else if (window == 5)
   {
     ShowScore();
   }
+  else if (window == 6)
+  {
+    ContinueWindow(btns);
+  }
+  else if (window == 7)
+  {
+    InputScore(btns);
+  }
 
-  if(getsw() && 0x1)
+  if(getsw() && 0x1) 
   {
     Restart();
   }

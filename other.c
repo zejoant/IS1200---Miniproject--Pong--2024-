@@ -9,6 +9,10 @@ void Quit()
 {
     window = 0;
     currentMenu = 1;
+    scoreValue = 0;
+    diffcultyAI = 2;
+    diffSelect = 1;
+    PORTE = 1;
 }   
 
 void MatchReset()
@@ -31,11 +35,11 @@ void Restart()
 {
         MatchReset();
         ImageReset();
-        display_update();
         StringReset();
         scoreP1 = 0;
         scoreP2 = 0;
         Quit();
+        display_update();
 }
 
 

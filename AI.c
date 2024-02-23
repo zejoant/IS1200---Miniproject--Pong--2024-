@@ -5,21 +5,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-int AIFollow = 0;
-int diffculty = 3;
+int followAI = 0;
+int diffcultyAI = 2;
 
 void AiMove()
 {
     if (getbtns() & 0x4 || getbtns() & 0x8)
     {
-        AIFollow++;
+        followAI++;
     }
     if (xBallPos < stickWidth*2)
     {
-        AIFollow += ((yBallPos+1) - (yPosStick1+(stickHeight/2)));
+        followAI += ((yBallPos+1) - (yPosStick1+(stickHeight/2)));
     }
 
-    if (!(AIFollow % diffculty == 0) && xBallPos > 128/2 && xBallSpeed > 0)
+    if (!(followAI % diffcultyAI == 0) && xBallPos > 128/2 && xBallSpeed > 0)
     {
         if (yPosStick2+stickHeight/2 < yBallPos+1)
             yPosStick2 += 1;

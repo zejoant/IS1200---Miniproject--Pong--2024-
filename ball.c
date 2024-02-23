@@ -55,7 +55,7 @@ void WallCheck()
         else
         {
             xBallSpeed *= -1.0;
-            yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick1+((float)stickHeight/2.0)))/4.0;
+            yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick1+((float)stickHeight/2.0)))/4.0 + stickSpeed1;
 
         }
     }
@@ -69,7 +69,7 @@ void WallCheck()
         else
         {
             xBallSpeed *= -1.0;
-            yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick2+((float)stickHeight/2.0)))/4.0;
+            yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick2+((float)stickHeight/2.0)))/4.0 + stickSpeed2;
         }
     }
 }

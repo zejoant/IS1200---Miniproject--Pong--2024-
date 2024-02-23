@@ -57,6 +57,7 @@ void enable_interrupt(void);
 //game window
 void Restart(void);
 void Quit(void);
+void ContinueWindow(int);
 extern int window; 
 extern int windowMem;
 extern int currentMenu;
@@ -97,4 +98,12 @@ extern int scoreP1;
 
 //Ai
 void AiMove(void);
-extern int AIFollow;
+extern int followAI;
+extern int diffcultyAI;
+extern int diffSelect;
+
+//HighScore
+void HighScore(int);
+void InputScore(int);
+extern int scoreValue;
+extern int continueSelect;
