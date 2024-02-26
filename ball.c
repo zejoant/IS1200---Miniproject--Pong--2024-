@@ -25,7 +25,7 @@ int scoreP1 = 0;
 
 
 
-void WallCheck()
+void WallCheck() //checks for collission
 {
     if(yBallPos > 32-2 || yBallPos < 0) //horizontal screen edge checks
     {
@@ -49,7 +49,6 @@ void WallCheck()
     {
         if(yLastPos >= yPosStick1+stickHeight || yLastPos+ballSize <= yPosStick1)
         {
-           // ySpeed *= -1;
             yBallSpeed = yBallSpeed * -1.0 + (float)stickSpeed2;
         }
         else
@@ -63,7 +62,6 @@ void WallCheck()
     {
         if(yLastPos >= yPosStick2+stickHeight || yLastPos+ballSize <= yPosStick2)
         {
-            //ySpeed *= -1;
             yBallSpeed = yBallSpeed * -1.0 + (float)stickSpeed2;
         }
         else
@@ -74,7 +72,7 @@ void WallCheck()
     }
 }
 
-void BallMove()
+void BallMove() //moves the ball
 {
     yLastPos = yBallPos;
     xBallPos += xBallSpeed; 

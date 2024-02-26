@@ -8,7 +8,7 @@
 int followAI = 0;
 int diffcultyAI = 2;
 
-void AiMove()
+void AiMove() //responsible for the movement of the Ai
 {
     if (getbtns() & 0x4 || getbtns() & 0x8)
     {
@@ -19,7 +19,7 @@ void AiMove()
         followAI += ((yBallPos+1) - (yPosStick1+(stickHeight/2)));
     }
 
-    if (!(followAI % diffcultyAI == 0) && xBallPos > 128/2 && xBallSpeed > 0)
+    if (!(followAI % diffcultyAI == 0) && xBallPos > 128/2 && xBallSpeed > 0) //movement of ai depends on difficulty and player input
     {
         if (yPosStick2+stickHeight/2 < yBallPos+1)
             yPosStick2 += 1;

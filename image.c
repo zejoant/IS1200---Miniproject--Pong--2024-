@@ -14,7 +14,7 @@ void StringReset()
     display_update();
 }
 
-void ConvertToPixels(int x, int y, int width, int height)
+void ConvertToPixels(int x, int y, int width, int height) // converts coordinates, etc into pixels on the screen.
 {
     int screenHeight;
     int screenWidth;
@@ -32,7 +32,7 @@ void ConvertToPixels(int x, int y, int width, int height)
 }
 
 
-void ImageReset()
+void ImageReset() //clears the screen (all pixels set to 0)
 {
     int screenHeight;
     int screenWidth;
@@ -52,7 +52,8 @@ void ImageReset()
     }
 }
 
-void ConvertToImage() {
+void ConvertToImage() //converts the output of ConvertToPixels into the correct format of the UNO32 IO/Shield.
+{
   int page;
   int column;
   int row;

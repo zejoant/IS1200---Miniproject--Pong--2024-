@@ -19,7 +19,7 @@ char list[4][8] = {"AAA: 02", "BBB: 01", "CCC: 00", "DDD: 00"};
 char temp1[8] = "OOO: 00";
 char temp2[8] = "TTT: 00";
 
-void SaveScore()
+void SaveScore() //converts score and initials to fit the highscore list
 {
     int i;
     int j;
@@ -60,7 +60,7 @@ void SaveScore()
     continueSelect = 1;
 }
 
-void InputScore(btns)
+void InputScore(btns) //lets the user input their initials for the highscore list.
 {   
     delay(200);
 
@@ -115,14 +115,7 @@ void InputScore(btns)
 
 }
 
-//char firstPlace[11] = "1. AAA: 00"
-//char secondPlace[11] = "2. BBB: 00"
-//char thirdPlace[11] = "3. CCC: 00"
-//char fourthPlace[11] = "4. DDD: 00"
-
-
-
-void Highscore(btns)
+void Highscore(btns) //displaying of the highscore list
 {
     delay(500);
     display_string(0, list[0]);
