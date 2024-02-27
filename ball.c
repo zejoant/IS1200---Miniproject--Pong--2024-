@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <time.h>
+#include <math.h>
 
 const int width = 2;
 const int height = 2;
@@ -23,18 +23,29 @@ float yBallSpeed = 0.0;
 int scoreP2 = 0;
 int scoreP1 = 0;
 
-
-
 void WallCheck() //checks for collission
 {
-    if(yBallPos > 32-2 || yBallPos < 0) //horizontal screen edge checks
+    /*if(yBallPos > 32-2 || yBallPos < 0) //horizontal screen edge checks
     {
         yBallSpeed *= -1.0;
+    }*/
+
+    //horizontal screen edge checks
+    if (yBallPos < 0) 
+    {
+        yBallSpeed *= -1.0;
+        yBallPos = 0;
+    }
+    else if (yBallPos > 32-2)
+    {
+        yBallSpeed *= -1.0;
+        yBallPos = 32-2;
     }
     
     if(xBallPos > 128) //vertical screen edge checks
     {
         scoreP1++;
+        followAI += scoreP1;
         windowMem = window;
         window = 5;
     }
@@ -53,7 +64,10 @@ void WallCheck() //checks for collission
         }
         else
         {
-            xBallSpeed *= -1.0;
+            if (xBallSpeed < 0)
+                xBallSpeed = -xBallSpeed;
+            //xBallSpeed *= -1.0;
+            //xBallSpeed = abs(xBallSpeed);
             yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick1+((float)stickHeight/2.0)))/4.0 + stickSpeed1;
 
         }
@@ -66,7 +80,10 @@ void WallCheck() //checks for collission
         }
         else
         {
-            xBallSpeed *= -1.0;
+            if (xBallSpeed > 0)
+                xBallSpeed = -xBallSpeed;
+            //xBallSpeed *= -1.0;
+            //xBallSpeed = -abs(xBallSpeed);
             yBallSpeed += (((float)yBallPos+((float)ballSize/2.0)) - ((float)yPosStick2+((float)stickHeight/2.0)))/4.0 + stickSpeed2;
         }
     }

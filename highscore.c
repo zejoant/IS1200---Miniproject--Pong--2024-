@@ -32,8 +32,6 @@ void SaveScore() //converts score and initials to fit the highscore list
     temp1[5] = (scoreValue / 10) + 48; //48 = 0x30
     temp1[6] = (scoreValue % 10) + 48;
 
-    PORTE = scoreValue;
-
     for(i = 0; i < 4; i++)
     {
         if((list[i][5]-48)*10 + list[i][6]-48 < scoreValue) //48 = 0x30
