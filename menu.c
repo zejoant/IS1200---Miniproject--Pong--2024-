@@ -9,23 +9,23 @@ int currentMenu = 1;
 int continueSelect = 1;
 int diffSelect = 1;
 
-void Menu(int btns)
+void Menu(int btns) //displaying on the menu
 {
-    delay(200);
-    if((btns & 0x1))
+    //delay(200);
+    if(BtnCheck(btns, 0x1)) //move up in menu
     {
         currentMenu++;
     }
-    else if((btns & 0x2))
+    else if(BtnCheck(btns, 0x2)) //move down in menu
     {
         currentMenu--;
     }
 
-    if(currentMenu > 4)
+    if(currentMenu > 4) //wrap-around
     {
         currentMenu = 1;
     }
-    if(currentMenu < 1)
+    if(currentMenu < 1) //wrap-around
     {
         currentMenu = 4;
     }
@@ -58,10 +58,10 @@ void Menu(int btns)
         display_string(3, ">  Difficulty");
     }
     
-    if(getbtns() & 0x4) //confirm button
+    if(BtnCheck(btns, 0x4)) //confirm button
     {
         StringReset();
-        delay(200);
+        delay(100);
         window = currentMenu; 
     }
 
@@ -69,16 +69,22 @@ void Menu(int btns)
         display_update();
 }
 
-void ContinueWindow(btns)
+void ContinueWindow(btns) //window that pops up after winning/losing asking you to continue or quit.
 {
 
-    if((getbtns() & 0x1))
+    if(BtnCheck(btns, 0x1))
     {
-        continueSelect = 2;
+        if (continueSelect == 2)
+            continueSelect = 1;
+        else
+            continueSelect = 2;
     }
-    else if((getbtns() & 0x2))
+    else if(BtnCheck(btns, 0x2))
     {
-        continueSelect = 1;
+        if (continueSelect == 1)
+            continueSelect = 2;
+        else
+            continueSelect = 1;
     }
 
     if (continueSelect == 1)
@@ -92,10 +98,10 @@ void ContinueWindow(btns)
         display_string(2, ">  Quit");
     }
 
-    if(getbtns() & 0x4) //confirm button
+    if(BtnCheck(btns, 0x4)) //confirm button
     {
         StringReset();
-        delay(1000);
+        delay(100);
         if (continueSelect == 1)
             window = 1; 
         else
@@ -105,14 +111,13 @@ void ContinueWindow(btns)
     display_update();
 }
 
-void Difficulty()
+void Difficulty(btns) //difficulty settings menu
 {
-    delay(200);
-    if((getbtns() & 0x1))
+    if(BtnCheck(btns, 0x1))
     {
         diffSelect++;
     }
-    else if((getbtns() & 0x2))
+    else if(BtnCheck(btns, 0x2))
     {
         diffSelect--;
     }
@@ -161,10 +166,10 @@ void Difficulty()
         PORTE = 15;
     }
     
-    if(getbtns() & 0x4) //confirm button
+    if(BtnCheck(btns, 0x4)) //confirm button
     {
         StringReset();
-        delay(200);
+        delay(100);
         window = 0; 
     }
 

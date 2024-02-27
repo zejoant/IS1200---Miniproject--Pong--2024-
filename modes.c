@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void Singleplayer(btns)
+void Singleplayer(btns) //calling of singleplaying functions
 {
     //Draw
     ImageReset();
@@ -23,7 +23,7 @@ void Singleplayer(btns)
     AiMove();
 }
 
-void Multiplayer(btns)
+void Multiplayer(btns) //calling of multiplayer functions
 {
     //Draw
     ImageReset();
@@ -41,65 +41,58 @@ void Multiplayer(btns)
     MoveStick2(btns);
 }
 
-void ShowScore()
+void ShowScore() //for displaying scores between rounds, winner, resetting positions of ball etc
 {
+    char scoreComparison[] = " P1: 0    P2: 0";
+
+    //inputs scores in string to be displayed
+    scoreComparison[5] = scoreP1+48;
+    scoreComparison[14] = scoreP2+48;
+
+    if (windowMem == 1) //displays "AI" instead of "P2"
+    {
+        scoreComparison[10] = 0x41;
+        scoreComparison[11] = 0x49;
+    }
+
     ImageReset();
 
     display_string(0, "      SCORE");
     display_string(1, "-----------------");
+    display_string(2, scoreComparison);
     display_string(3, "-----------------");
-
     
-    if(scoreP1 == 1 && scoreP2 == 0)
-        display_string(2, " P1: 1    P2: 0");
-    else if(scoreP1 == 2 && scoreP2 == 0)
-        display_string(2, " P1: 2    P2: 0");
-    else if(scoreP1 == 3 && scoreP2 == 0)
-        display_string(2, " P1: 3    P2: 0");
-
-    else if(scoreP1 == 0 && scoreP2 == 1)
-        display_string(2, " P1: 0    P2: 1");
-    else if(scoreP1 == 1 && scoreP2 == 1)
-        display_string(2, " P1: 1    P2: 1");
-    else if(scoreP1 == 2 && scoreP2 == 1)
-        display_string(2, " P1: 2    P2: 1");
-    else if(scoreP1 == 3 && scoreP2 == 1)
-        display_string(2, " P1: 3    P2: 1");
-
-    else if(scoreP1 == 0 && scoreP2 == 2)
-        display_string(2, " P1: 0    P2: 2");
-    else if(scoreP1 == 1 && scoreP2 == 2)
-        display_string(2, " P1: 1    P2: 2");
-    else if(scoreP1 == 2 && scoreP2 == 2)
-        display_string(2, " P1: 2    P2: 2");
-    else if(scoreP1 == 3 && scoreP2 == 2)
-        display_string(2, " P1: 3    P2: 2");
-
-    else if(scoreP1 == 0 && scoreP2 == 3)
-        display_string(2, " P1: 0    P2: 3");
-    else if(scoreP1 == 1 && scoreP2 == 3)
-        display_string(2, " P1: 1    P2: 3");
-    else if(scoreP1 == 2 && scoreP2 == 3)
-        display_string(2, " P1: 2    P2: 3");
-    else if(scoreP1 == 3 && scoreP2 == 3)
-        display_string(2, " P1: 3    P2: 3");
-    
-    else if(scoreP1 == 4)
+    //checks winning conditions
+    if(scoreP1 == 4 && windowMem != 1)
+    {
+        display_string(0, "   Game Over");
         display_string(2, "Player 1 wins!");
+    }
     else if(scoreP2 == 4 && windowMem != 1)
+    {
+        display_string(0, "   Game Over");
         display_string(2, "Player 2 wins!");
+    }
     else if (scoreP2 == 4 && windowMem == 1)
-        display_string(2, "AI wins!");
+    {
+        display_string(0, "Nice try but...");
+        display_string(2, "    AI wins");
+    }
+    else if (scoreP1 == 4 && windowMem == 1)
+    {
+        display_string(0, "Congratulations");
+        display_string(2, "    You won!");
+    }
     
     display_update();
     delay(2500);
     MatchReset();
 
-    if (scoreP1 == 4)
+    if (scoreP1 == 4) //adds to score value for the highscore
     {
         scoreValue++;
     }
-    if(scoreP1 == 4 || scoreP2 == 4)
+    if(scoreP1 == 4 || scoreP2 == 4) //ends match if score of either is 4
     {
         if (windowMem == 1)
         {

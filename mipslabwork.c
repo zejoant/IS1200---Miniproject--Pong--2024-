@@ -43,7 +43,7 @@ void labinit( void )
 
 /* This function is called repetitively from the main program */
 
-void labwork( void ) 
+void labwork( void ) //responsible for choosing which window is displayed
 {
   int btns = getbtns();
   int sw = getsw();
@@ -66,7 +66,7 @@ void labwork( void )
   }
   else if (window == 4)
   {
-    Difficulty();
+    Difficulty(btns);
   }
   else if (window == 5)
   {

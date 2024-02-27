@@ -49,9 +49,7 @@ extern char textbuffer[4][16];
 /* Written as part of asm lab: delay, time2string */
 void delay(int);
 void time2string( char *, int );
-/* Written as part of i/o lab: getbtns, getsw, enable_interrupt */
-int getbtns(void);
-int getsw(void);
+
 void enable_interrupt(void);
 
 //game window
@@ -107,3 +105,8 @@ void HighScore(int);
 void InputScore(int);
 extern int scoreValue;
 extern int continueSelect;
+
+//Input
+int getbtns(void);
+int getsw(void);
+int BtnCheck(int, int);

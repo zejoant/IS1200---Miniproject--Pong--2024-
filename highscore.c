@@ -15,7 +15,7 @@ int letter3 = 65;
 char initials[16] = "Name: AAA  Done";
 int selectedLetter = 0;
 
-char list[4][8] = {"AAA: 02", "BBB: 01", "CCC: 00", "DDD: 00"};
+char list[4][8] = {"ACE: 02", "BOB: 01", "NON: 00", "NON: 00"};
 char temp1[8] = "OOO: 00";
 char temp2[8] = "TTT: 00";
 
@@ -32,7 +32,6 @@ void SaveScore() //converts score and initials to fit the highscore list
     temp1[5] = (scoreValue / 10) + 48; //48 = 0x30
     temp1[6] = (scoreValue % 10) + 48;
 
-    //PORTE = (list[0][5]-48)*10 + list[0][6]-48;
     PORTE = scoreValue;
 
     for(i = 0; i < 4; i++)
@@ -62,21 +61,22 @@ void SaveScore() //converts score and initials to fit the highscore list
 
 void InputScore(btns) //lets the user input their initials for the highscore list.
 {   
-    delay(200);
-
-    if(letter1 == 91){
+    if(letter1 == 91)
+    {
         letter1 = 65;
     }
-    if(letter2 == 91){
+    if(letter2 == 91)
+    {
         letter2 = 65;
     }
-    if(letter3 == 91){
+    if(letter3 == 91)
+    {
         letter3 = 65;
     }
 
-    if(getbtns() & 0x1 && selectedLetter < 3)
+    if(BtnCheck(btns, 0x1) && selectedLetter < 3)
        selectedLetter++; 
-    else if (getbtns() & 0x2 && selectedLetter > 0)
+    else if (BtnCheck(btns, 0x2) && selectedLetter > 0)
         selectedLetter--;
 
     if (selectedLetter == 0)
@@ -94,7 +94,7 @@ void InputScore(btns) //lets the user input their initials for the highscore lis
 
     display_string(1, initials);
 
-    if(getbtns() & 0x4)
+    if(BtnCheck(btns, 0x4))
     {
         if (selectedLetter == 0)
             letter1++;
@@ -106,9 +106,19 @@ void InputScore(btns) //lets the user input their initials for the highscore lis
         {
             StringReset();
             SaveScore();
-            delay(1000);
+            delay(100);
             window = 3;
         }
+    }
+
+    if(BtnCheck(btns, 0x8))
+    {
+        if (selectedLetter == 0)
+            letter1--;
+        if (selectedLetter == 1)
+            letter2--;
+        if (selectedLetter == 2)
+            letter3--;
     }
 
     display_update();
@@ -117,16 +127,15 @@ void InputScore(btns) //lets the user input their initials for the highscore lis
 
 void Highscore(btns) //displaying of the highscore list
 {
-    delay(500);
     display_string(0, list[0]);
     display_string(1, list[1]);
     display_string(2, list[2]);
     display_string(3, list[3]);
 
-    if (getbtns() && 0x4)
+    if (BtnCheck(btns, 0x4))
     {
         StringReset();
-        delay(500);
+        delay(100);
         currentMenu = 3;
         window = 0;
     }

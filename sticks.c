@@ -16,7 +16,7 @@ const int xPosStick2 = 124;
 int stickSpeed1 = 0;
 int stickSpeed2 = 0;
 
-void MoveStick1(btns)
+void MoveStick1(btns) //moves stick 1 (player 1)
 {
     if(getbtns() & 0x8)
     {
@@ -41,7 +41,7 @@ void MoveStick1(btns)
     yPosStick1 += stickSpeed1; 
 }
 
-void MoveStick2(btns)
+void MoveStick2(btns) //moves stick 2 (player 2)
 {
     if(getbtns() & 0x2)
     {
