@@ -81,7 +81,7 @@ void labwork( void ) //responsible for choosing which window is displayed
     InputScore(btns);
   }
 
-  if(getsw() && 0x1) 
+  if(sw && 0x1) 
   {
     Restart();
   }

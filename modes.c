@@ -20,7 +20,7 @@ void Singleplayer(btns) //calling of singleplaying functions
 
     //Sticks
     MoveStick1(btns);
-    AiMove();
+    AiMove(btns);
 }
 
 void Multiplayer(btns) //calling of multiplayer functions

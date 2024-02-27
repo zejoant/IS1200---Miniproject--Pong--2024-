@@ -9,10 +9,10 @@ int followAI = 0;
 int diffcultyAI = 2;
 int AISpeed = 1;
 
-void AiMove() //responsible for the movement of the Ai
+void AiMove(btns) //responsible for the movement of the Ai
 {
     //semi-random calculations
-    if (getbtns() & 0x4 || getbtns() & 0x8) 
+    if (btns & 0x4 || btns & 0x8) 
     {
         followAI++;
     }

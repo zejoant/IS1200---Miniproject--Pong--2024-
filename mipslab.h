@@ -95,7 +95,7 @@ extern int scoreP2;
 extern int scoreP1;
 
 //Ai
-void AiMove(void);
+void AiMove(int);
 extern int followAI;
 extern int diffcultyAI;
 extern int diffSelect;
@@ -110,3 +110,5 @@ extern int continueSelect;
 int getbtns(void);
 int getsw(void);
 int BtnCheck(int, int);
+extern int btns;
+extern int sw;
