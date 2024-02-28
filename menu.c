@@ -8,10 +8,12 @@
 int currentMenu = 1;
 int continueSelect = 1;
 int diffSelect = 1;
+char menuItems[4][16] = {">  SinglePlayer", "  Multiplayer", "  Highscore", "  Difficulty"};
 
 void Menu(int btns) //displaying on the menu
 {
-    //delay(200);
+    int i;
+
     if(BtnCheck(btns, 0x1)) //move up in menu
     {
         currentMenu++;
@@ -29,6 +31,16 @@ void Menu(int btns) //displaying on the menu
     {
         currentMenu = 4;
     }
+
+    /*for (i = 0; i < 4; i++)
+    {
+        display_string(i, menuItems[i]);
+        menuItems[i][0] = 0x7f;
+    }
+
+    menuItems[currentMenu-1][0] = 0x3e;
+    display_string(currentMenu-1, menuItems[currentMenu-1]);*/
+
     if (currentMenu == 1)
     {
         display_string(0, ">  SinglePlayer");

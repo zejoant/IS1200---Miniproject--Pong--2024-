@@ -30,9 +30,9 @@ void AiMove(btns) //responsible for the movement of the Ai
 
     if (!(followAI % diffcultyAI == 0) && xBallPos > 128/2 && xBallSpeed > 0) //movement of ai depends on difficulty and player input
     {
-        if (yPosStick2+stickHeight/2 < yBallPos-2)
+        if ((yPosStick2+stickHeight/2 < yBallPos-2) && yPosStick2 < 32-stickHeight)
             yPosStick2 += AISpeed;
-        else if ((yPosStick2+stickHeight/2 > yBallPos+4))
+        else if ((yPosStick2+stickHeight/2 > yBallPos+4) && yPosStick2 > 0)
             yPosStick2 -= AISpeed;
     }
 }

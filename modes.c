@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+char line[17] = {0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03, 0x03}; 
+
 void Singleplayer(btns) //calling of singleplaying functions
 {
     //Draw
@@ -58,20 +60,20 @@ void ShowScore() //for displaying scores between rounds, winner, resetting posit
     ImageReset();
 
     display_string(0, "      SCORE");
-    display_string(1, "-----------------");
+    display_string(1, line);
     display_string(2, scoreComparison);
-    display_string(3, "-----------------");
+    display_string(3, line);
     
     //checks winning conditions
     if(scoreP1 == 4 && windowMem != 1)
     {
         display_string(0, "   Game Over");
-        display_string(2, "Player 1 wins!");
+        display_string(2, " Player 1 wins!");
     }
     else if(scoreP2 == 4 && windowMem != 1)
     {
         display_string(0, "   Game Over");
-        display_string(2, "Player 2 wins!");
+        display_string(2, " Player 2 wins!");
     }
     else if (scoreP2 == 4 && windowMem == 1)
     {

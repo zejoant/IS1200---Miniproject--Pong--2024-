@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-//char hej[4] = "hej";
-//display_string(0, hej);
-
 int scoreValue = 0;
 int letter1 = 65;
 int letter2 = 65;
@@ -18,6 +15,8 @@ int selectedLetter = 0;
 char list[4][8] = {"ACE: 02", "BOB: 01", "NON: 00", "NON: 00"};
 char temp1[8] = "OOO: 00";
 char temp2[8] = "TTT: 00";
+
+char special[15] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x01, 0x02}; //contains custom arrow
 
 void SaveScore() //converts score and initials to fit the highscore list
 {
@@ -84,7 +83,7 @@ void InputScore(btns) //lets the user input their initials for the highscore lis
     if (selectedLetter == 2)
         display_string(2, "        ^");
     if (selectedLetter == 3)
-        display_string(2, "            ^^");
+        display_string(2, special);
 
     initials[6] = letter1;
     initials[7] = letter2;
